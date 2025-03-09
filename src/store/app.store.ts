@@ -150,6 +150,7 @@ type AppStore = {
   updateProduct: (ID: string, updatedData: Partial<IRow>) => void;
   stores: IRowStore[];
   addStore: (store: IRowStore) => void;
+  removeStore: (id: string) => void;
 };
 export const useAppStore = create<AppStore>((set) => ({
   products: [
@@ -182,4 +183,17 @@ export const useAppStore = create<AppStore>((set) => ({
     set((state) => ({
       stores: state.stores ? [...state.stores, store] : [store],
     })),
+  removeStore: (id: string) =>
+    set((state) => {
+      // Filter out the item
+      const updatedData = state.stores.filter((item) => item.id !== id);
+
+      // Reassign seqNo starting from 1
+      const reorderedData = updatedData.map((item, index) => ({
+        ...item,
+        seqNo: index + 1,
+      }));
+
+      return { stores: reorderedData };
+    }),
 }));

@@ -160,11 +160,13 @@ ModuleRegistry.registerModules([AllCommunityModule]);
 //   city: string;
 //   state: string;
 // }
-const DeleteButtonComponent = () => {
+const DeleteButtonComponent = ({ id }: { id: string }) => {
+  const removeStore = useAppStore((state) => state.removeStore);
+
   return (
     <button
       className="hover:cursor-pointer pt-2"
-      onClick={() => window.alert("clicked")}
+      onClick={() => removeStore(id)}
     >
       <Trash2 size={16} />
     </button>
@@ -202,7 +204,10 @@ const Store = () => {
   //Colunm defination : defines and controls grid colunm
   const [colDefs] = useState<ColDef<IRowStore>[]>([
     {
-      cellRenderer: DeleteButtonComponent,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      cellRenderer: (params: any) => (
+        <DeleteButtonComponent id={params.data.id} />
+      ),
       width: 50,
     },
     {
