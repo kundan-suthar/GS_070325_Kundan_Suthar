@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import type { ColDef } from "ag-grid-community";
 import { AllCommunityModule, ModuleRegistry } from "ag-grid-community";
 import { AgGridReact } from "ag-grid-react";
+import { Trash2 } from "lucide-react";
 import { useState } from "react";
 
 ModuleRegistry.registerModules([AllCommunityModule]);
@@ -289,13 +290,35 @@ interface IRow {
   Price: number;
   Cost: number;
 }
+const DeleteButtonComponent = () => {
+  return (
+    <button
+      className="hover:cursor-pointer pt-2"
+      onClick={() => window.alert("clicked")}
+    >
+      <Trash2 size={16} />
+    </button>
+  );
+};
 
 const SKU = () => {
   //Row Data: data to be displayed
   const [rowData] = useState<IRow[]>(products);
   //Colunm defination : defines and controls grid colunm
   const [colDefs] = useState<ColDef<IRow>[]>([
-    { field: "Label", headerName: "SKU" },
+    {
+      cellRenderer: DeleteButtonComponent,
+      width: 50,
+    },
+    {
+      field: "Label",
+      headerName: "SKU",
+      cellStyle: { borderRight: "1px solid #ccc" },
+      headerStyle: {
+        borderRight: "1px solid #ccc",
+      },
+      headerClass: "no-resize-header", // Add a custom class
+    },
     { field: "Price" },
     { field: "Cost" },
   ]);
