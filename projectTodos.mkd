@@ -1,0 +1,68 @@
+# To-Do List for the App
+
+## 1. Navigation Bar
+
+- [x] Display a top navigation bar
+  - [x] Include company logo on the left
+  - [ ] Include a sign-in/sign-out menu on the right (if authentication is implemented)
+
+## 2. Left Navigation Menu
+
+- [x] Display a left navigation menu
+  - [x] Include icons and labels for each screen
+
+## 3. Store Dimension Screen
+
+- [ ] Implement functionality to manage stores
+  - [ ] Add a store
+  - [ ] Remove a store
+  - [ ] Update store details
+  - [ ] Reorder stores
+
+## 4. SKU Dimension Screen
+
+- [x] Implement functionality to manage SKUs
+  - [x] Add an SKU
+  - [x] Remove an SKU
+  - [x] Update SKU details (Price and Cost)
+
+## 5. Planning Screen
+
+- [ ] Display an AG-Grid with cross join of Stores and SKUs along rows, Calendar along columns
+  - [ ] Group Calendar by Weeks and Months
+  - [ ] Add columns for each Week:
+    - [ ] Sales Units: Editable integer values for units sold
+    - [ ] Sales Dollars: Non-editable, calculated field (Sales Units \* Price)
+    - [ ] GM Dollars: Non-editable, calculated field (Sales Dollars - Sales Units \* Cost)
+    - [ ] GM %: Non-editable, calculated field (GM Dollars / Sales Dollars)
+    - [ ] Apply conditional formatting to GM % column:
+      - [ ] Green for GM % ≥ 40%
+      - [ ] Yellow for GM % ≥ 10% and < 40%
+      - [ ] Orange for GM % > 5% and < 10%
+      - [ ] Red for GM % ≤ 5%
+
+## 6. OPTIONAL: Chart Page
+
+- [ ] Allow user to select a store and display a dual-axis bar chart
+  - [ ] GM Dollars and GM % on the Y-Axis
+  - [ ] Weeks along the X-Axis
+  - [ ] Calculate GM Dollars and GM % across all SKUs for the selected store
+  - [ ] Format the chart according to the charting library used
+
+## 7. OPTIONAL: Import Sample Data
+
+- [ ] Implement functionality to import sample data to prepopulate the application screens
+
+## 8. Page Design
+
+- [ ] Ensure the page design is responsive with a minimum width of 1080 pixels
+
+## 9. Grid and Chart Layout
+
+- [ ] Ensure the Grid and Chart fit with the edges of the screen
+  - [ ] Add reasonable margins and padding
+
+## 10. Styling and Component Library
+
+- [ ] Use a popular styling and/or components library
+  - [ ] Follow the standards of the chosen library for consistency
