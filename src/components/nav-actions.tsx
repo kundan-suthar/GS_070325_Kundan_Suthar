@@ -36,7 +36,7 @@ export function NavActions() {
   const [isOpen, setIsOpen] = React.useState(false);
 
   React.useEffect(() => {
-    setIsOpen(true);
+    setIsOpen(false);
   }, []);
 
   return (
