@@ -7,3 +7,11 @@ export interface IRow {
   Price: number;
   Cost: number;
 }
+
+export interface IRowStore {
+  seqNo: number;
+  id: string;
+  label: string;
+  city: string;
+  state: string;
+}
