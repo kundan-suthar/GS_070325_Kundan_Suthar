@@ -32,6 +32,7 @@ const SKU = () => {
   //Colunm defination : defines and controls grid colunm
   const [colDefs] = useState<ColDef<IRow>[]>([
     {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       cellRenderer: (params: any) => (
         <DeleteButtonComponent ID={params.data.ID} />
       ),
