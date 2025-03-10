@@ -1,4 +1,5 @@
-import { IPlanningMain } from "@/shared.types";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { useAppStore } from "@/store/app.store";
 import { AllCommunityModule, ColDef, ModuleRegistry } from "ag-grid-community";
 import { AgGridReact } from "ag-grid-react";
