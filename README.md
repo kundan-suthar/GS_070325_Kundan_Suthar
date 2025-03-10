@@ -1,54 +1,79 @@
-# React + TypeScript + Vite
+# GS Assignment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Setup & Running Instructions
 
-Currently, two official plugins are available:
+### Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Ensure you have [Node.js](https://nodejs.org/) installed (preferably the latest LTS version).
+- Install dependencies using `npm` or `yarn`.
 
-## Expanding the ESLint configuration
+### Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+```sh
+# Clone the repository (if applicable)
+git clone <repository-url>
+cd gs-assignment
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+# Install dependencies
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Running the Development Server
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```sh
+npm run dev
 ```
+
+This will start a development server, typically accessible at `http://localhost:5173/`.
+
+### Building the Project
+
+```sh
+npm run build
+```
+
+This will create a production-ready build in the `dist/` folder.
+
+### Running ESLint for Code Linting
+
+```sh
+npm run lint
+```
+
+### Previewing the Build
+
+```sh
+npm run preview
+```
+
+This command serves the built project locally for testing before deployment.
+
+---
+
+## Features & Highlights
+
+### What Went Well
+
+- **Adapting to New Libraries**: Even though I was fairly new to `ag-grid`, `recharts`, and `shadcn/ui`, I successfully integrated them into the project.
+- **Keeping Up with Modern Libraries**: As a developer, staying updated with the latest tools is crucial. My ability to quickly understand and utilize these libraries demonstrates my adaptability and willingness to learn.
+- **Efficient State Management**: Zustand was used for efficient state management, reducing unnecessary re-renders.
+
+---
+
+## Improvements with Additional Time
+
+If given **4 more hours**, I would:
+
+- **Create a Reusable Select Component**: This would standardize and reduce redundancy across the project.
+- **Implement Dark Mode**: Enhancing the UI/UX for users who prefer dark mode.
+- **Add Authentication**: Implementing authentication would make the project more robust and production-ready.
+
+---
+
+## Feedback on the Challenge
+
+This was a well-structured challenge that allowed me to demonstrate my ability to learn and implement new technologies quickly. It provided a good balance of complexity and practical application.
+
+---
+
+Thank you for reviewing my submission! 🚀
