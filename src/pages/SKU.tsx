@@ -69,7 +69,6 @@ const SKU = () => {
   ]);
   useEffect(() => {
     setProductList(products);
-    console.log(products);
   }, [products]);
   return (
     <div style={{ width: "100%", height: "90%" }}>
