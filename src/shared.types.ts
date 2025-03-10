@@ -15,3 +15,19 @@ export interface IRowStore {
   city: string;
   state: string;
 }
+export interface IPlanning {
+  Store: string;
+  SKU: string;
+  Week: string;
+  SalesUnits: string;
+}
+export interface IPlanningMain {
+  StoreLabel: string;
+  Week: string;
+
+  SKUName: string;
+  SalesUnits: number;
+  SalesDollars: number;
+  GMDollars: number;
+  GMPercent: string;
+}
