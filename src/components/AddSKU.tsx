@@ -56,7 +56,6 @@ export function AddSKU() {
     };
     addProduct(newProduct);
     setOpen(false);
-    console.log("Product Added:", newProduct);
   };
   return (
     <Dialog open={open} onOpenChange={setOpen}>

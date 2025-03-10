@@ -51,7 +51,6 @@ export function AddStore() {
     };
     addStore(newStore);
     setOpen(false);
-    console.log("store Added:", newStore);
   };
 
   return (
