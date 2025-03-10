@@ -1,79 +1,70 @@
 # GS Assignment
 
-## Project Setup & Running Instructions
+## Live Demo
+
+[Click here to view the live application](https://gs-070325-kundan-suthar.vercel.app/charts)
+
+## Getting Started
 
 ### Prerequisites
 
-- Ensure you have [Node.js](https://nodejs.org/) installed (preferably the latest LTS version).
-- Install dependencies using `npm` or `yarn`.
+Make sure you have the following installed:
 
-### Installation
+- [Node.js](https://nodejs.org/) (Latest LTS version recommended)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
 
-```sh
-# Clone the repository (if applicable)
-git clone <repository-url>
-cd gs-assignment
+### Installation & Running the Project
 
-# Install dependencies
-npm install
-```
+1. Clone the repository:
 
-### Running the Development Server
+   ```sh
+   git clone <repository-url>
+   cd gs-assignment
+   ```
 
-```sh
-npm run dev
-```
+2. Install dependencies:
 
-This will start a development server, typically accessible at `http://localhost:5173/`.
+   ```sh
+   npm install
+   # or
+   yarn install
+   ```
 
-### Building the Project
+3. Start the development server:
 
-```sh
-npm run build
-```
+   ```sh
+   npm run dev
+   ```
 
-This will create a production-ready build in the `dist/` folder.
+   This will start the Vite development server. Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
 
-### Running ESLint for Code Linting
+4. Run build for production:
 
-```sh
-npm run lint
-```
+   ```sh
+   npm run build
+   ```
 
-### Previewing the Build
+5. Run the preview of the built project:
 
-```sh
-npm run preview
-```
+   ```sh
+   npm run preview
+   ```
 
-This command serves the built project locally for testing before deployment.
+6. Run linting:
+   ```sh
+   npm run lint
+   ```
 
----
+## Features Implemented Successfully
 
-## Features & Highlights
+- **Usage of Ag-Grid, Recharts, and ShadCN**: Despite being new to these libraries, I successfully implemented them to fulfill all requirements. As a developer, staying up to date with new technologies is essential, and I took this opportunity to learn and integrate these libraries effectively.
 
-### What Went Well
+## Potential Improvements if Given More Time
 
-- **Adapting to New Libraries**: Even though I was fairly new to `ag-grid`, `recharts`, and `shadcn/ui`, I successfully integrated them into the project.
-- **Keeping Up with Modern Libraries**: As a developer, staying updated with the latest tools is crucial. My ability to quickly understand and utilize these libraries demonstrates my adaptability and willingness to learn.
-- **Efficient State Management**: Zustand was used for efficient state management, reducing unnecessary re-renders.
-
----
-
-## Improvements with Additional Time
-
-If given **4 more hours**, I would:
-
-- **Create a Reusable Select Component**: This would standardize and reduce redundancy across the project.
-- **Implement Dark Mode**: Enhancing the UI/UX for users who prefer dark mode.
-- **Add Authentication**: Implementing authentication would make the project more robust and production-ready.
-
----
+- **Reusable Select Component**: I would create a single select component that could be reused across different use cases, reducing redundancy in my code.
+- **Dark Mode Implementation**: Adding dark mode support would enhance the user experience and accessibility.
+- **Authentication**: Implementing authentication would improve security and user management.
 
 ## Feedback on the Challenge
 
-This was a well-structured challenge that allowed me to demonstrate my ability to learn and implement new technologies quickly. It provided a good balance of complexity and practical application.
-
----
-
-Thank you for reviewing my submission! 🚀
+This was a well-structured challenge that provided a great opportunity to explore and implement new technologies. I enjoyed working on it!
