@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import {
   ComposedChart,
   Bar,
@@ -37,8 +37,8 @@ const SalesChart = () => {
       sales.forEach(({ SKU, SalesUnits }) => {
         const product = products.find((p) => p.ID === SKU);
         if (product) {
-          const salesDollars = SalesUnits * product.Price;
-          const gmDollars = salesDollars - SalesUnits * product.Cost;
+          const salesDollars = Number(SalesUnits) * product.Price;
+          const gmDollars = salesDollars - Number(SalesUnits) * product.Cost;
           totalGM += gmDollars;
           totalSalesDollars += salesDollars;
         }
@@ -51,7 +51,7 @@ const SalesChart = () => {
           totalSalesDollars > 0 ? (totalGM / totalSalesDollars) * 100 : 0,
       };
     });
-  }, []);
+  }, [products, planningData]);
 
   return (
     <Card className="p-4">
