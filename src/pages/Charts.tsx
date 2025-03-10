@@ -1,3 +1,4 @@
+import React, { useMemo } from "react";
 import {
   ComposedChart,
   Bar,
@@ -7,82 +8,99 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
+  CartesianGrid,
 } from "recharts";
 
-// Sample Data: Replace this with your actual GM Dollars and Sales Data
-const data = [
-  {
-    week: "Week 1",
-    gmDollars: 5000,
-    salesDollars: 10000,
-    gmPercent: (5000 / 10000) * 100,
-  },
-  {
-    week: "Week 2",
-    gmDollars: 7000,
-    salesDollars: 15000,
-    gmPercent: (7000 / 15000) * 100,
-  },
-  {
-    week: "Week 3",
-    gmDollars: 4000,
-    salesDollars: 9000,
-    gmPercent: (4000 / 9000) * 100,
-  },
-  {
-    week: "Week 4",
-    gmDollars: 8000,
-    salesDollars: 17000,
-    gmPercent: (8000 / 17000) * 100,
-  },
-];
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
+//import { planningData, products } from "@/data";
+import { useAppStore } from "@/store/app.store";
 
-const Charts = () => {
+const selectedStore = "ST035"; // Fixed store selection
+
+const SalesChart = () => {
+  const { products, planningData, stores } = useAppStore();
+  // Find the store name
+  const store = stores.find((s) => s.id === selectedStore);
+  const storeName = store ? store.label : "Unknown Store";
+
+  // Function to get 52 weeks of data for the selected store
+  const weeklyData = useMemo(() => {
+    return Array.from({ length: 52 }, (_, index) => {
+      const week = `W${String(index + 1).padStart(2, "0")}`;
+      const sales = planningData.filter(
+        (p) => p.Store === selectedStore && p.Week === week
+      );
+
+      let totalGM = 0;
+      let totalSalesDollars = 0;
+
+      sales.forEach(({ SKU, SalesUnits }) => {
+        const product = products.find((p) => p.ID === SKU);
+        if (product) {
+          const salesDollars = SalesUnits * product.Price;
+          const gmDollars = salesDollars - SalesUnits * product.Cost;
+          totalGM += gmDollars;
+          totalSalesDollars += salesDollars;
+        }
+      });
+
+      return {
+        week,
+        grossMargin: totalGM,
+        gmPercentage:
+          totalSalesDollars > 0 ? (totalGM / totalSalesDollars) * 100 : 0,
+      };
+    });
+  }, []);
+
   return (
-    <ResponsiveContainer width="100%" height={400}>
-      <ComposedChart
-        data={data}
-        margin={{ top: 20, right: 30, left: 20, bottom: 10 }}
-      >
-        {/* X-Axis (Weeks) */}
-        <XAxis dataKey="week" />
-
-        {/* Left Y-Axis for GM Dollars */}
-        <YAxis
-          yAxisId="left"
-          label={{ value: "GM Dollars", angle: -90, position: "insideLeft" }}
-        />
-
-        {/* Right Y-Axis for GM Percentage */}
-        <YAxis
-          yAxisId="right"
-          orientation="right"
-          tickFormatter={(value) => `${value}%`}
-          label={{ value: "GM %", angle: -90, position: "insideRight" }}
-        />
-
-        <Tooltip />
-        <Legend />
-
-        {/* GM Dollars as Bar Chart */}
-        <Bar
-          yAxisId="left"
-          dataKey="gmDollars"
-          fill="#8884d8"
-          name="GM Dollars"
-        />
-
-        {/* GM % as Line Chart */}
-        <Line
-          yAxisId="right"
-          dataKey="gmPercent"
-          stroke="#82ca9d"
-          name="GM %"
-          dot={{ r: 5 }}
-        />
-      </ComposedChart>
-    </ResponsiveContainer>
+    <Card className="p-4">
+      <CardHeader>
+        <h2 className="text-xl font-bold">
+          Gross Margin & GM% Trend (52 Weeks)
+        </h2>
+        <p className="text-sm text-gray-500">
+          Store: {storeName} ({selectedStore})
+        </p>
+      </CardHeader>
+      <CardContent>
+        <ResponsiveContainer width="100%" height={500}>
+          <ComposedChart data={weeklyData}>
+            <XAxis dataKey="week" />
+            <YAxis
+              yAxisId="left"
+              label={{
+                value: "Gross Margin ($)",
+                angle: -90,
+                position: "insideLeft",
+              }}
+            />
+            <YAxis
+              yAxisId="right"
+              orientation="right"
+              label={{ value: "GM %", angle: -90, position: "insideRight" }}
+            />
+            <Tooltip />
+            <Legend />
+            <CartesianGrid strokeDasharray="3 3" />
+            <Bar
+              yAxisId="left"
+              dataKey="grossMargin"
+              fill="#82ca9d"
+              name="Gross Margin"
+            />
+            <Line
+              yAxisId="right"
+              type="monotone"
+              dataKey="gmPercentage"
+              stroke="#8884d8"
+              name="GM %"
+            />
+          </ComposedChart>
+        </ResponsiveContainer>
+      </CardContent>
+    </Card>
   );
 };
 
-export default Charts;
+export default SalesChart;
